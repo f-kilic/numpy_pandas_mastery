@@ -1,0 +1,11 @@
+Tweet_ID,Kullanici,Tweet_Metni,Begeniler,Retweetler,Hesap_Yasi_Gun
+101,veri_kurdu,Pandas çok iyi!,150.0,15.0,365
+102,furkan_dev,Bugün hava harika.,45.0,2.0,120
+103,anonim,,0.0,0.0,5
+104,furkan_dev,Veri analizi zor ama zevkli.,,,120
+105,python_fan,Python > All,300.0,50.0,800
+106,anonim,Reklam tweeti...,2.0,0.0,2
+107,veri_kurdu,Eksik veri can sıkar,,10.0,365
+108,ahmet123,,15.0,1.0,45
+109,furkan_dev,Groupby mantığını çözdüm,85.0,12.0,120
+110,bot_hesap,Tıkla para kazan!,0.0,0.0,1
