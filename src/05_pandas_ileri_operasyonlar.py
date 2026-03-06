@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 
@@ -16,8 +17,8 @@ print("Tüm hücrelerin e üssü x'i:\n", np.exp(ser2))
 print("\nTüm hücrelerin (sin(x * pi / 4)) değeri:\n", np.sin(ser2 * np.pi / 4))
 
 print("\n--- İndeks Hizalama (Index Alignment) ve fill_value ---")
-area = pd.Series({'Alaska': 1723337, 'Texas': 695662, 'California': 423967})
-population = pd.Series({'California': 38332521, 'Texas': 26448193, 'New York': 19651127})
+area = pd.Series({'Alaska': 1723337, 'Texas': 695662, 'California': 423967}, name='area')
+population = pd.Series({'California': 38332521, 'Texas': 26448193, 'New York': 19651127}, name='population')
 
 # Pandas indeksleri otomatik eşleştirir. Eşleşmeyenlere NaN basar.
 print("Doğrudan Bölme (NaN üretir):\n", population / area)
