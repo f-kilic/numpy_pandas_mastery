@@ -109,3 +109,25 @@ print("\n--- TEST SONUÇLARI ---")
 for cumle in test_cumleleri:
     print(yapay_zeka_tahmin_et(cumle))
     print("-" * 60)
+
+# ==============================================================================
+# 📌 MİMARİ NOT VE GELECEK HEDEFLERİ (Modelin Zayıf Karnı ve Çözüm Yolu)
+# ==============================================================================
+# %91.67 genel başarıya ulaşmış ve gündelik geyik muhabbetlerini (0) 
+# ustalıkla filtreleyebilmiştir. Ancak "Şampuan saçlarımı kepek yaptı" gibi 
+# bazı test cümlelerinde (1 olması gerekirken 0 diyerek) çuvallamıştır.
+#
+# SEBEP (Recall Hatası):
+# Bu bir algoritma veya kod çöküşü değildir; bu bir VERİ YETERSİZLİĞİ durumudur.
+# Sisteme beslediğimiz 1197 satırlık laboratuvar verisinin içinde kozmetik, 
+# gıda vb. farklı sektörlere ait kelimeler (şampuan, kepek) bulunmadığı için, 
+# makinenin 9690 kelimelik sözlüğünde bu kelimelerin matematiksel ağırlığı 
+# (TF-IDF puanı) oluşmamıştır. Model bilmediği kelimeyi risk almayıp 0'a atmıştır.
+#
+# ÇÖZÜM:
+# Kurduğum Doğal Dil İşleme (NLP) ve Makine Öğrenmesi mimarisi (Pipeline) 
+# uçtan uca kusursuz çalışmaktadır. Kodu değiştirmeye gerek yoktur. 
+# Sistemi gerçek bir ürüne dönüştürmek için tek yapılması gereken; 1. aşamadaki 
+# ham veri setini 1.000 satırdan 100.000 satıra çıkarmak ve modeli daha çeşitli 
+# (farklı sektörlerden) verilerle yeniden eğitmektir.
+# ==============================================================================
