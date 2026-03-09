@@ -9,7 +9,7 @@ filtreli_veriler= pd.read_csv('projects/00_csv/twitter_birlestirilmis_temiz.csv'
 # Eğer info() yazarsan, bu bir fonksiyondur (çalıştır emridir) ve  Non-Null Count ve Dtype yazan gerçek röntgeni verir.
 
 
-filtreli_veriler= filtreli_veriler[ filtreli_veriler['label'] == 1 ]
+# filtreli_veriler= filtreli_veriler[ filtreli_veriler['label'] == 1 ]
 
 # print(filtreli_veriler)
 
@@ -60,6 +60,19 @@ temiz_kelimeler = tum_kelimeler[~tum_kelimeler.isin(cop_kelimeler)]
 # 4. Kalan kelimeleri saydırıp, zirvedeki ilk 20 kelimeyi ekrana basıyoruz!
 print("--- TWITTER'DA EN ÇOK KONUŞULAN KELİMELER/MARKALAR ---")
 print(temiz_kelimeler.value_counts().head(20))
+
+
+
+# 1. KRİTİK HAMLE: Çöp kelimeleri (Stop Words) ASIL tablomuzun (filtreli_veriler) içinden kalıcı olarak siliyoruz.
+# (Her bir tweeti al, içindeki kelimelere bak, çöp listesinde yoksa o kelimeyi tutup cümleyi tekrar birleştir.)
+filtreli_veriler['tweet_text'] = filtreli_veriler['tweet_text'].apply(lambda x: ' '.join([kelime for kelime in str(x).split() if kelime not in cop_kelimeler]))
+print("\nÇöp kelimeler asıl veri setinden kalıcı olarak temizlendi.")
+
+
+# 2. KAYDETMEK
+kayit_yolu_nlp = 'projects/00_csv/twitter_nlp_tam_temiz.csv'
+filtreli_veriler.to_csv(kayit_yolu_nlp, index=False)
+print(f"NLP temizliği yapılmış NİHAİ veri şuraya kaydedildi: {kayit_yolu_nlp}")
 
 
 import matplotlib.pyplot as plt
