@@ -1,5 +1,8 @@
 import pandas as pd
 
+from snowballstemmer import TurkishStemmer
+stemmer = TurkishStemmer()
+
 filtreli_veriler= pd.read_csv('projects/00_csv/twitter_birlestirilmis_temiz.csv')
 
 # print(filtreli_veriler.info) 
@@ -65,7 +68,8 @@ print(temiz_kelimeler.value_counts().head(20))
 
 # 1. KRİTİK HAMLE: Çöp kelimeleri (Stop Words) ASIL tablomuzun (filtreli_veriler) içinden kalıcı olarak siliyoruz.
 # (Her bir tweeti al, içindeki kelimelere bak, çöp listesinde yoksa o kelimeyi tutup cümleyi tekrar birleştir.)
-filtreli_veriler['tweet_text'] = filtreli_veriler['tweet_text'].apply(lambda x: ' '.join([kelime for kelime in str(x).split() if kelime not in cop_kelimeler]))
+# 1. KRİTİK HAMLE: Çöp kelimeleri sil ve kalanları KÖKLERİNE İNDİR (Stemming)
+filtreli_veriler['tweet_text'] = filtreli_veriler['tweet_text'].apply(lambda x: ' '.join([stemmer.stemWord(kelime) for kelime in str(x).split() if kelime not in cop_kelimeler]))
 print("\nÇöp kelimeler asıl veri setinden kalıcı olarak temizlendi.")
 
 
