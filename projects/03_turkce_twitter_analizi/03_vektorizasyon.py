@@ -118,3 +118,18 @@ for cumle in test_cumleleri:
     print(yapay_zeka_tahmin_et(cumle))
     print("-" * 60)
 
+
+# ==============================================================================
+# 📌 MİMARİ NOT VE SÜRÜM GEÇMİŞİ (V1 -> V2 Geçişi)
+# ==============================================================================
+# [V1 Sorunu - Boyutluluk Laneti]: İlk sürümde Türkçe metinler sadece Regex ile 
+# temizlendiği için, sondan eklemeli dil yapısı (örn: klavye, klavyenin, klavyeler) 
+# modelin 9690 kolonluk (feature) devasa bir matris oluşturmasına (overfitting) 
+# ve canlı yayın testlerinde "Eğitim-Çıkarım Asimetrisi" yaşamasına neden oldu.
+#
+# [V2 Çözümü - Morfolojik Analiz]: Sisteme 'SnowballStemmer' entegre edildi. 
+# Kelimeler köklerine indirgenerek (Stemming) feature sayısı 6744'e düşürüldü. 
+# Gelen canlı test verileri de modele girmeden önce aynı kök bulucu işlemden 
+# geçirildi. Model artık ekleri değil, anlamsal kökleri sınıflandırarak 
+# yüksek doğrulukla çalışmaktadır.
+# ==============================================================================
